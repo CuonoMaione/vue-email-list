@@ -1,31 +1,59 @@
 
 
 
-function GetEmail() {
-    axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-    .then(function(response){
-      return response.data.response ;
-    }) 
-}
+const { createApp } = Vue;
 
+createApp({
+    data() {
+        return{
 
-;
+        emailList :[],
+        }
+    },
 
-console.log(GetEmail())
+    methods:{
 
-
-
-
-let email = [];
-
-for (let i = 0; i < 10; i++) {
+        
+        
+        
     
-   
+    },
+
+    created() {
+        
+
+        for (let i = 0; i < 10; i++) {
+            
+        axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+
+
+        .then ( (response) => {
     
-   email.push(GetEmail());
-   
+        const randomMail = response.data.response;
+    
+        this.emailList.push(randomMail)
+    
+        })
+    };
 
-}
+        
+        
+},
 
-console.log(email)
+
+}).mount('#app');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
